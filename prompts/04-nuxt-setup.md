@@ -1,5 +1,10 @@
 # Background Agent Prompt: Nuxt Setup
 
+## Pull Request
+Create a PR with your changes. The agent will automatically create a `cursor/*` branch.
+
+**Suggested PR Title**: `feat: Add Nuxt 4 frontend with Directus integration`
+
 ## Task
 Setup Nuxt 4 frontend in `apps/web/` with @directus/visual-library and SCSS/BEM.
 

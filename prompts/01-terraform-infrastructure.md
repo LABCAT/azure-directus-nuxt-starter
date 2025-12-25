@@ -1,5 +1,10 @@
 # Background Agent Prompt: Terraform Infrastructure
 
+## Pull Request
+Create a PR with your changes. The agent will automatically create a `cursor/*` branch.
+
+**Suggested PR Title**: `feat: Add Terraform infrastructure modules`
+
 ## Task
 Create Terraform modules for all Azure resources in the `infra/` directory.
 

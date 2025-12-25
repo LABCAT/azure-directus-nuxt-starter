@@ -1,5 +1,10 @@
 # Background Agent Prompt: Docker Local Development
 
+## Pull Request
+Create a PR with your changes. The agent will automatically create a `cursor/*` branch.
+
+**Suggested PR Title**: `feat: Add Docker Compose local development setup`
+
 ## Task
 Create Docker Compose setup for local development in the `docker/` directory.
 

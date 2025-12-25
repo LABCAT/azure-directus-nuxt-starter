@@ -1,5 +1,10 @@
 # Background Agent Prompt: Directus Setup
 
+## Pull Request
+Create a PR with your changes. The agent will automatically create a `cursor/*` branch.
+
+**Suggested PR Title**: `feat: Add Directus backend configuration`
+
 ## Task
 Setup Directus backend in `apps/directus/` for Docker-based development with directus-sync.
 

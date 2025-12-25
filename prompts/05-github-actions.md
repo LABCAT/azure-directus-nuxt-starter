@@ -1,5 +1,10 @@
 # Background Agent Prompt: GitHub Actions CI/CD
 
+## Pull Request
+Create a PR with your changes. The agent will automatically create a `cursor/*` branch.
+
+**Suggested PR Title**: `feat: Add GitHub Actions CI/CD workflows`
+
 ## Task
 Create GitHub Actions workflows for Directus and Nuxt deployments.
 
