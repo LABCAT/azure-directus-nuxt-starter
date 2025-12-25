@@ -1,0 +1,44 @@
+---
+description: Rules for Terraform infrastructure code
+globs: ["infra/**/*.tf", "infra/**/*.tfvars"]
+alwaysApply: false
+---
+
+# Terraform Rules
+
+## File Structure
+- Use `main.tf` for primary resources
+- Use `variables.tf` for input variables
+- Use `outputs.tf` for outputs
+- Use `providers.tf` for provider configuration
+- Use `versions.tf` for version constraints
+- Group related resources into modules under `modules/`
+
+## Naming Conventions
+- Resources: snake_case (`azurerm_resource_group.main`)
+- Variables: snake_case (`container_app_name`)
+- Outputs: snake_case (`database_connection_string`)
+- Modules: kebab-case directories (`modules/container-apps/`)
+
+## Best Practices
+- Always use variables for environment-specific values
+- Use `locals` for computed values and repeated expressions
+- Tag all resources with `environment`, `project`, and `managed_by` tags
+- Use `terraform fmt` before committing
+- Store state in Azure Storage Account backend
+- Use separate `.tfvars` files per environment (`uat.tfvars`, `production.tfvars`)
+
+## Azure Resources
+- Use Burstable B1ms for PostgreSQL Flexible Server (cost optimization)
+- Use Azure Container Apps for Directus
+- Use Azure Static Web Apps for Nuxt
+- Use Azure Cache for Redis Basic tier
+- Use Azure Blob Storage for Directus assets
+- Use Azure Key Vault for all secrets
+
+## Security
+- Never hardcode secrets
+- Store all secrets in Azure Key Vault (DB password, Directus secret, API keys, storage keys)
+- Use Key Vault references in Container Apps environment variables
+- Use managed identities for Key Vault access
+- Use managed identities over connection strings when available

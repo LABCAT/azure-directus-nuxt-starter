@@ -1,0 +1,53 @@
+---
+description: Rules for Directus backend code
+globs: ["apps/directus/**/*", "docker/directus*.Dockerfile"]
+alwaysApply: false
+---
+
+# Directus 11.5+ Rules
+
+## Important
+Directus runs in Docker, NOT via pnpm. No package.json in apps/directus/.
+
+## Project Structure
+```
+apps/directus/
+├── schema/           # Schema versioning (directus-sync)
+│   ├── collections/
+│   ├── fields/
+│   ├── relations/
+│   └── ...
+├── extensions/              # Custom extensions (mounted into Docker)
+│   ├── hooks/
+│   ├── endpoints/
+│   └── interfaces/
+└── uploads/                 # Local dev only (gitignored)
+```
+
+## Schema Management
+- Use `directus-sync` for all schema changes
+- Run via `pnpm dlx directus-sync pull` from project root
+- Commit `schema/` files with every schema change
+- Never modify schema directly in production
+
+## Extensions
+- Write all extensions in TypeScript
+- Follow Directus extension naming: `directus-extension-<name>`
+- Extensions are mounted into Docker container at runtime
+
+## Environment Variables
+- In production, secrets stored in Azure Key Vault
+- Required variables:
+  - `DB_CLIENT`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USER`, `DB_PASSWORD`
+  - `REDIS_HOST`, `REDIS_PORT`
+  - `SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`
+  - Storage variables for Azure Blob
+
+## Docker
+- Dev Dockerfile: Mount extensions for hot reload
+- Prod Dockerfile: Multi-stage build, minimal image
+- Base image: `directus/directus:latest` (11.5+)
+
+## API Conventions
+- Use descriptive collection names (plural, snake_case)
+- Use consistent field naming (snake_case)

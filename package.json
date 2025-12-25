@@ -1,0 +1,21 @@
+{
+  "name": "azure-directus-nuxt-starter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Azure Directus Nuxt Starter - Monorepo with Terraform, Docker, and GitHub Actions",
+  "scripts": {
+    "dev:web": "pnpm --filter @app/web dev",
+    "build:web": "pnpm --filter @app/web build",
+    "lint:web": "pnpm --filter @app/web lint",
+    "typecheck:web": "pnpm --filter @app/web typecheck",
+    "docker:up": "docker compose -f docker/docker-compose.yml up -d",
+    "docker:down": "docker compose -f docker/docker-compose.yml down",
+    "docker:logs": "docker compose -f docker/docker-compose.yml logs -f"
+  },
+  "engines": {
+    "node": ">=24.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "packageManager": "pnpm@10.0.0"
+}
+

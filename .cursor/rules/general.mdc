@@ -1,0 +1,43 @@
+---
+description: General project rules applied across all file types
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# General Project Rules
+
+## Package Management
+- Use pnpm exclusively (not npm or yarn)
+- Run `pnpm install` from root (workspace mode)
+- Add dependencies to correct workspace package
+
+## TypeScript
+- TypeScript required for all JS code
+- Strict mode enabled everywhere
+- No `any` types
+
+## Code Style
+- No inline comments unless critical for understanding
+- Use JSDoc/TSDoc only for public APIs
+- Code should be self-documenting
+- No TODO comments in committed code
+
+## Documentation
+- README.md must be extremely concise — only critical info to work on the project
+- Detailed documentation belongs in AGENTS.md
+- No verbose explanations — bullet points and code blocks preferred
+
+## Git
+- Commit messages: conventional commits format
+- Branch naming: `feature/*`, `fix/*`, `deploy/*`
+- Never commit secrets or `.env` files
+
+## File Naming
+- Components: PascalCase
+- Composables/utils: camelCase
+- Config files: kebab-case or standard names
+- SCSS partials: `_kebab-case.scss`
+
+## Environment
+- Node.js 24+ LTS (see `.nvmrc`)
+- Use `.env.example` as template, never commit `.env`

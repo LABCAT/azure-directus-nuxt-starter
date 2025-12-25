@@ -1,0 +1,68 @@
+---
+description: Rules for Nuxt frontend code
+globs: ["apps/web/**/*"]
+alwaysApply: false
+---
+
+# Nuxt 4 Rules
+
+## Project Structure (Nuxt 4)
+```
+apps/web/
+├── nuxt.config.ts
+├── package.json
+├── tsconfig.json
+├── app/                     # Main app directory (Nuxt 4)
+│   ├── app.vue
+│   ├── app.config.ts
+│   ├── error.vue
+│   ├── assets/
+│   │   └── scss/
+│   │       ├── main.scss
+│   │       ├── global/
+│   │       └── components/
+│   ├── components/
+│   ├── composables/
+│   ├── layouts/
+│   ├── middleware/
+│   ├── pages/
+│   ├── plugins/
+│   └── utils/
+├── public/
+├── server/                  # API routes, middleware
+└── shared/                  # Code shared between app and server
+```
+
+## TypeScript
+- Strict mode enabled in `tsconfig.json`
+- Explicit return types on all functions
+- Use `interface` over `type` for object shapes
+- Never use `any` — use `unknown` and type narrow
+
+## Components
+- File naming: PascalCase (`UserCard.vue`)
+- Use `<script setup lang="ts">`
+- Props must be typed with `defineProps<T>()`
+- Emits must be typed with `defineEmits<T>()`
+- Prefer composition API over options API
+
+## Composables
+- File naming: camelCase with `use` prefix (`useAuth.ts`)
+- Must return typed object
+- Keep composables focused (single responsibility)
+
+## Directus Integration
+- Use `@directus/sdk` for API calls
+- Use `@directus/visual-library` for CMS components
+- Create a `useDirectus()` composable for SDK instance
+- Handle errors consistently with typed error responses
+
+## State Management
+- Use `useState()` for simple shared state
+- Use Pinia only if state complexity requires it
+
+## Azure Static Web Apps
+- Include `staticwebapp.config.json` for routing
+- Configure fallback routes for SPA behavior
+- Set environment variables in Azure portal
+- Use Node.js 24 runtime

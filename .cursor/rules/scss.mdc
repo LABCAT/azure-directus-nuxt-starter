@@ -1,0 +1,71 @@
+---
+description: Rules for SCSS styling with BEM methodology
+globs: ["**/*.scss", "**/*.vue"]
+alwaysApply: false
+---
+
+# SCSS/BEM Rules
+
+## BEM Naming Convention
+- **Block**: Standalone component (`.card`, `.navigation`)
+- **Element**: Part of block (`.card__title`, `.card__image`)
+- **Modifier**: Variant or state (`.card--featured`, `.card__title--large`)
+
+## Syntax Rules
+```scss
+// Correct BEM structure
+.block {
+  &__element {
+    // element styles
+  }
+
+  &--modifier {
+    // modifier styles
+  }
+
+  &__element--modifier {
+    // element with modifier
+  }
+}
+```
+
+## File Structure (Nuxt 4)
+```
+app/assets/scss/
+├── main.scss              # Entry point, imports all
+├── global/
+│   ├── _reset.scss
+│   ├── _typography.scss
+│   ├── _variables.scss    # CSS custom properties only
+│   └── _utilities.scss
+└── components/
+    ├── _button.scss
+    ├── _card.scss
+    └── _navigation.scss
+```
+
+## Conventions
+- Use CSS custom properties, NOT SASS variables
+- One component per SCSS file
+- File naming: kebab-case with underscore prefix (`_user-card.scss`)
+- Max nesting depth: 3 levels
+- No `!important` unless absolutely necessary
+
+## CSS Custom Properties
+```scss
+// In global/_variables.scss
+:root {
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --font-family-base: 'Inter', sans-serif;
+}
+```
+
+## In Vue Components
+- Use `<style lang="scss" scoped>` for component styles
+- Import global variables if needed: `@use '@/assets/scss/global/variables' as *;`
+- Keep component-specific styles in the component file
+- Move reusable styles to `app/assets/scss/components/`
