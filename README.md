@@ -69,19 +69,21 @@ terraform init
 # UAT Environment
 terraform workspace new uat        # First time only
 terraform workspace select uat
-terraform plan -var-file="environments/uat.tfvars"
-terraform apply -var-file="environments/uat.tfvars"
+TF_LOG=INFO terraform plan -var-file="environments/uat.tfvars"
+TF_LOG=INFO terraform apply -var-file="environments/uat.tfvars"
 
 # Production Environment
 terraform workspace new production  # First time only
 terraform workspace select production
-terraform plan -var-file="environments/production.tfvars"
-terraform apply -var-file="environments/production.tfvars"
+TF_LOG=INFO terraform plan -var-file="environments/production.tfvars"
+TF_LOG=INFO terraform apply -var-file="environments/production.tfvars"
 
 # List/check current workspace
 terraform workspace list
 terraform workspace show
 ```
+
+**Logging levels:** `TF_LOG=INFO` (recommended), `TF_LOG=DEBUG` (more detail), `TF_LOG=TRACE` (very verbose)
 
 **Important:** Always ensure you're in the correct workspace before running apply!
 
