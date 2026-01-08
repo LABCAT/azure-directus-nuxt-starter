@@ -60,13 +60,30 @@ az provider show --namespace Microsoft.App --query "registrationState"
 
 ### Terraform Commands
 
+Each environment uses a separate **workspace** to isolate state files:
+
 ```bash
 cd infra
 terraform init
-TF_LOG=TRACE terraform plan -var-file="environments/uat.tfvars"       # Preview changes
-TF_LOG=TRACE terraform apply -var-file="environments/uat.tfvars"      # UAT
-TF_LOG=TRACE terraform apply -var-file="environments/production.tfvars"  # Prod
+
+# UAT Environment
+terraform workspace new uat        # First time only
+terraform workspace select uat
+terraform plan -var-file="environments/uat.tfvars"
+terraform apply -var-file="environments/uat.tfvars"
+
+# Production Environment
+terraform workspace new production  # First time only
+terraform workspace select production
+terraform plan -var-file="environments/production.tfvars"
+terraform apply -var-file="environments/production.tfvars"
+
+# List/check current workspace
+terraform workspace list
+terraform workspace show
 ```
+
+**Important:** Always ensure you're in the correct workspace before running apply!
 
 Secrets are stored in **Azure Key Vault** (DB password, Directus secret, storage keys, etc).
 

@@ -33,6 +33,7 @@ infra/*.tfstate
 infra/*.tfstate.*
 infra/*.tfplan
 infra/.terraform.lock.hcl
+infra/terraform.tfstate.d/
 
 # Docker
 docker/certs/
