@@ -1,4 +1,4 @@
 environment  = "production"
-location     = "australiaeast"
+location     = "australiasoutheast"
 swa_location = "eastasia"
 project_name = "labcat"
