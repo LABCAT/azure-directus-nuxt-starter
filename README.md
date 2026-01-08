@@ -28,6 +28,19 @@ cd apps/web && pnpm dev
 
 - [Terraform CLI](https://developer.hashicorp.com/terraform/install) installed
 - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed
+- **Azure Pay-As-You-Go subscription** (required for multiple environments)
+
+### Azure Subscription Requirements
+
+Free/trial Azure subscriptions have strict quotas that limit infrastructure deployment:
+
+| Resource | Free Tier Limit | Pay-As-You-Go |
+|----------|-----------------|---------------|
+| Container App Environments | 1 total | 5+ per region |
+| PostgreSQL Flexible Servers | Limited | Standard |
+| Redis Cache | Limited | Standard |
+
+**To deploy both UAT and Production**, upgrade to Pay-As-You-Go or request quota increases via Azure Portal → Subscriptions → Usage + Quotas.
 
 ### Azure Authentication
 

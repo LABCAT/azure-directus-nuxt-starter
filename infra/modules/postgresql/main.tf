@@ -2,10 +2,9 @@ resource "azurerm_postgresql_flexible_server" "main" {
   name                   = "${var.project_name}-${var.environment}-psql"
   resource_group_name    = var.resource_group_name
   location               = var.location
-  version                = "16" # Directus supports recent PG. 16 is good.
+  version                = "16"
   administrator_login    = "directus"
   administrator_password = var.admin_password
-  zone                   = "1"
 
   storage_mb   = 32768
   storage_tier = "P4"
