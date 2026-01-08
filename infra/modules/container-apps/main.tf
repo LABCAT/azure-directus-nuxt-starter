@@ -40,27 +40,27 @@ resource "azurerm_container_app" "directus" {
   secret {
     name                = "db-password"
     key_vault_secret_id = "${var.key_vault_uri}secrets/db-password"
-    identity            = "SystemAssigned"
+    identity            = "System"
   }
   secret {
     name                = "directus-secret"
     key_vault_secret_id = "${var.key_vault_uri}secrets/directus-secret"
-    identity            = "SystemAssigned"
+    identity            = "System"
   }
   secret {
     name                = "directus-admin-password"
     key_vault_secret_id = "${var.key_vault_uri}secrets/directus-admin-password"
-    identity            = "SystemAssigned"
+    identity            = "System"
   }
   secret {
     name                = "storage-account-key"
     key_vault_secret_id = "${var.key_vault_uri}secrets/storage-account-key"
-    identity            = "SystemAssigned"
+    identity            = "System"
   }
   secret {
     name                = "redis-password"
     key_vault_secret_id = "${var.key_vault_uri}secrets/redis-password"
-    identity            = "SystemAssigned"
+    identity            = "System"
   }
 
   template {
