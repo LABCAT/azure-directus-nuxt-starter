@@ -14,3 +14,9 @@ variable "location" {
   type        = string
   default     = "australiaeast"
 }
+
+variable "swa_location" {
+  description = "Azure region for Static Web App (limited availability: westus2, centralus, eastus2, westeurope, eastasia)"
+  type        = string
+  default     = "eastasia"
+}

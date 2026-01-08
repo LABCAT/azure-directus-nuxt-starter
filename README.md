@@ -42,6 +42,21 @@ az account set --subscription "YOUR_SUBSCRIPTION_ID"
 az account show
 ```
 
+### Register Resource Providers (First Time Only)
+
+```bash
+az provider register --namespace Microsoft.App
+az provider register --namespace Microsoft.Web
+az provider register --namespace Microsoft.ContainerRegistry
+az provider register --namespace Microsoft.DBforPostgreSQL
+az provider register --namespace Microsoft.Cache
+az provider register --namespace Microsoft.KeyVault
+az provider register --namespace Microsoft.Storage
+
+# Check registration status
+az provider show --namespace Microsoft.App --query "registrationState"
+```
+
 ### Terraform Commands
 
 ```bash

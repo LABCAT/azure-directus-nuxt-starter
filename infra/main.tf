@@ -117,7 +117,7 @@ module "swa" {
   source              = "./modules/static-web-app"
   project_name        = var.project_name
   environment         = var.environment
-  location            = var.location
+  location            = var.swa_location
   resource_group_name = module.rg.name
   tags                = local.tags
 }
