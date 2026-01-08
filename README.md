@@ -4,9 +4,10 @@ Monorepo: Directus + Nuxt 3 + Terraform + Docker + GitHub Actions
 
 ## Quick Start (Local)
 
-```bash
-# Prerequisites: Node 24+ LTS, pnpm 10+, Docker, mkcert
+**Prerequisites:** Node 24+ LTS, pnpm 10+, Docker, mkcert
 
+```bash
+nvm use
 pnpm install
 
 # SSL certs (first time)
@@ -23,9 +24,30 @@ cd apps/web && pnpm dev
 
 ## Deploy Infrastructure
 
+**Prerequisites:**
+- [Terraform CLI](https://developer.hashicorp.com/terraform/install) installed
+- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed
+
+### Azure Authentication
+
+```bash
+# Login to Azure
+az login
+
+# Set your subscription (if you have multiple)
+az account list --output table
+az account set --subscription "YOUR_SUBSCRIPTION_ID"
+
+# Verify
+az account show
+```
+
+### Terraform Commands
+
 ```bash
 cd infra
 terraform init
+terraform plan -var-file="environments/uat.tfvars"       # Preview changes
 terraform apply -var-file="environments/uat.tfvars"      # UAT
 terraform apply -var-file="environments/production.tfvars"  # Prod
 ```
