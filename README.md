@@ -25,6 +25,7 @@ cd apps/web && pnpm dev
 ## Deploy Infrastructure
 
 **Prerequisites:**
+
 - [Terraform CLI](https://developer.hashicorp.com/terraform/install) installed
 - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed
 
@@ -62,9 +63,9 @@ az provider show --namespace Microsoft.App --query "registrationState"
 ```bash
 cd infra
 terraform init
-terraform plan -var-file="environments/uat.tfvars"       # Preview changes
-terraform apply -var-file="environments/uat.tfvars"      # UAT
-terraform apply -var-file="environments/production.tfvars"  # Prod
+TF_LOG=TRACE terraform plan -var-file="environments/uat.tfvars"       # Preview changes
+TF_LOG=TRACE terraform apply -var-file="environments/uat.tfvars"      # UAT
+TF_LOG=TRACE terraform apply -var-file="environments/production.tfvars"  # Prod
 ```
 
 Secrets are stored in **Azure Key Vault** (DB password, Directus secret, storage keys, etc).
@@ -72,6 +73,7 @@ Secrets are stored in **Azure Key Vault** (DB password, Directus secret, storage
 ## Deploy Apps
 
 Push to trigger GitHub Actions:
+
 - `deploy/uat` → UAT environment
 - `deploy/production` → Production environment
 
@@ -94,4 +96,3 @@ docker/           # Docker Compose + Dockerfiles
 ```
 
 See `AGENTS.md` for full documentation.
-
